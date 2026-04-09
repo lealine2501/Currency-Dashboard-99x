@@ -44,7 +44,7 @@ def plot_history(pair_df, quote, base):
         margin=dict(l=50, r=20, t=50, b=30),
         plot_bgcolor="white",
         paper_bgcolor="white",
-        xaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=""),
+        xaxis=dict(showgrid=True, gridcolor="#f0f0f0", title="", dtick="M1", tickformat="%b %Y"),
         yaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=f"{quote} per 1 {base}"),
         font=dict(family="Arial", size=11),
         showlegend=False
@@ -69,7 +69,7 @@ def plot_ltm(pair_df, quote, base):
         margin=dict(l=50, r=20, t=50, b=30),
         plot_bgcolor="white",
         paper_bgcolor="white",
-        xaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=""),
+        xaxis=dict(showgrid=True, gridcolor="#f0f0f0", title="", dtick="M1", tickformat="%b %Y"),
         yaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=f"{quote} per 1 {base}"),
         font=dict(family="Arial", size=11),
         showlegend=False
