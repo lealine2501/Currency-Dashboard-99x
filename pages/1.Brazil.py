@@ -1,0 +1,54 @@
+import streamlit as st
+import pandas as pd
+from utils import load_data, get_pair, plot_history, plot_ltm, build_matrix
+
+st.set_page_config(page_title="Brazil — 99x", page_icon="🇧🇷", layout="wide")
+
+st.markdown("""
+    <style>
+    .main { background-color: #f8f9fb; }
+    h1, h2, h3 { color: #1B3D6E; }
+    </style>
+""", unsafe_allow_html=True)
+
+st.title("🇧🇷 Brazil")
+st.markdown("Exchange rates relevant to 99x Brazil operations.")
+st.divider()
+
+df = load_data()
+
+usd_nok = get_pair(df, "NOK", "USD")
+brl_nok = get_pair(df, "NOK", "BRL")
+
+# --- USD/NOK graphs ---
+st.subheader("USD / NOK")
+col1, col2 = st.columns(2)
+with col1:
+    st.plotly_chart(plot_history(usd_nok, "NOK", "USD"), use_container_width=True)
+with col2:
+    st.plotly_chart(plot_ltm(usd_nok, "NOK", "USD"), use_container_width=True)
+
+st.divider()
+
+# --- BRL/NOK graphs ---
+st.subheader("BRL / NOK")
+col3, col4 = st.columns(2)
+with col3:
+    st.plotly_chart(plot_history(brl_nok, "NOK", "BRL"), use_container_width=True)
+with col4:
+    st.plotly_chart(plot_ltm(brl_nok, "NOK", "BRL"), use_container_width=True)
+
+st.divider()
+
+# --- Matrix ---
+st.subheader("Rate Matrix — NOK (last 24 months)")
+st.caption("B = end of month rate · M = monthly average rate")
+
+matrix_usd = build_matrix(usd_nok, "NOK", "USD", "USD/NOK")
+matrix_brl = build_matrix(brl_nok, "NOK", "BRL", "BRL/NOK")
+
+matrix = pd.concat([matrix_usd, matrix_brl])
+st.dataframe(
+    matrix.style.format("{:.4f}"),
+    use_container_width=True
+)
