@@ -10,7 +10,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🇵🇹 Portugal")
+st.title("Portugal")
 st.markdown("Exchange rates relevant to 99x Portugal operations.")
 st.divider()
 

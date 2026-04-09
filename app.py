@@ -20,9 +20,7 @@ st.markdown("Live exchange rate tracking for 99x subsidiaries. Data refreshes ho
 
 st.divider()
 
-df = load_data()
-
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown("### 🇧🇷 Brazil")
@@ -37,13 +35,18 @@ with col3:
     st.markdown("### 🇵🇹 Portugal")
     st.markdown("EUR / NOK")
 
+with col4:
+    st.markdown("### 🇸🇪 Sweden")
+    st.markdown("SEK / NOK")
+
 st.divider()
 
+df = load_data()
+
 st.subheader("Latest Rates")
-latest = df[df["Latest"] == 1][["Quote_CUR", "Base_CUR", "Rate", "Date", "Source"]].copy()
+latest = df[df["Latest"] == 1].copy()
+latest = latest[latest["Quote_CUR"] != latest["Base_CUR"]]
+latest = latest[["Quote_CUR", "Base_CUR", "Rate", "Date", "Source"]]
 latest["Date"] = latest["Date"].dt.strftime("%Y-%m-%d")
 latest["Rate"] = latest["Rate"].round(4)
-latest = latest.sort_values("Quote_CUR")
-st.dataframe(latest, use_container_width=True, hide_index=True)
-
-st.caption("Data sourced from Azure SQL via GitHub Actions.")
+latest = latest

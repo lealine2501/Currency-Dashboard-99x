@@ -16,21 +16,31 @@ def get_pair(df, quote, base):
         (df["Quote_CUR"] == quote) & (df["Base_CUR"] == base)
     ].copy().sort_values("Date")
 
+def to_monthly(pair_df, months):
+    cutoff = pd.Timestamp.now() - pd.DateOffset(months=months)
+    df = pair_df[pair_df["Date"] >= cutoff].copy()
+    df["YearMonth"] = df["Date"].dt.to_period("M")
+    monthly = df.groupby("YearMonth")["Rate"].mean().reset_index()
+    monthly["YearMonth"] = monthly["YearMonth"].dt.to_timestamp()
+    # Remove any future months
+    monthly = monthly[monthly["YearMonth"] <= pd.Timestamp.now()]
+    return monthly
+
 def plot_history(pair_df, quote, base):
-    cutoff = pd.Timestamp.now() - pd.DateOffset(months=24)
-    filtered = pair_df[pair_df["Date"] >= cutoff]
+    monthly = to_monthly(pair_df, 24)
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=filtered["Date"],
-        y=filtered["Rate"],
-        mode="lines",
-        line=dict(color="#1B3D6E", width=1.5),
+        x=monthly["YearMonth"],
+        y=monthly["Rate"],
+        mode="lines+markers",
+        line=dict(color="#1B3D6E", width=2),
+        marker=dict(size=5, color="#1B3D6E"),
         fill="tozeroy",
         fillcolor="rgba(27,61,110,0.07)"
     ))
     fig.update_layout(
         title=dict(text=f"{base} / {quote} — 2 year history", font=dict(size=14)),
-        height=300,
+        height=320,
         margin=dict(l=50, r=20, t=50, b=30),
         plot_bgcolor="white",
         paper_bgcolor="white",
@@ -42,25 +52,24 @@ def plot_history(pair_df, quote, base):
     return fig
 
 def plot_ltm(pair_df, quote, base):
-    cutoff = pd.Timestamp.now() - pd.DateOffset(months=12)
-    filtered = pair_df[pair_df["Date"] >= cutoff].copy()
-    filtered["YearMonth"] = filtered["Date"].dt.to_period("M")
-    monthly = filtered.groupby("YearMonth")["Rate"].mean().reset_index()
-    monthly["YearMonth"] = monthly["YearMonth"].dt.to_timestamp()
+    monthly = to_monthly(pair_df, 12)
     fig = go.Figure()
-    fig.add_trace(go.Bar(
+    fig.add_trace(go.Scatter(
         x=monthly["YearMonth"],
         y=monthly["Rate"],
-        marker_color="#1B3D6E",
-        marker_line_width=0
+        mode="lines+markers",
+        line=dict(color="#1B3D6E", width=2),
+        marker=dict(size=5, color="#1B3D6E"),
+        fill="tozeroy",
+        fillcolor="rgba(27,61,110,0.07)"
     ))
     fig.update_layout(
-        title=dict(text=f"{base} / {quote} — LTM monthly avg", font=dict(size=14)),
-        height=300,
+        title=dict(text=f"{base} / {quote} — LTM", font=dict(size=14)),
+        height=320,
         margin=dict(l=50, r=20, t=50, b=30),
         plot_bgcolor="white",
         paper_bgcolor="white",
-        xaxis=dict(showgrid=False, title=""),
+        xaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=""),
         yaxis=dict(showgrid=True, gridcolor="#f0f0f0", title=f"{quote} per 1 {base}"),
         font=dict(family="Arial", size=11),
         showlegend=False
