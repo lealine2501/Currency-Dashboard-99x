@@ -23,20 +23,20 @@ st.divider()
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.markdown("### 🇧🇷 Brazil")
+    st.markdown("###Brazil")
     st.markdown("USD / NOK")
     st.markdown("BRL / NOK")
 
 with col2:
-    st.markdown("### 🇱🇰 Sri Lanka")
+    st.markdown("###Sri Lanka")
     st.markdown("LKR / NOK")
 
 with col3:
-    st.markdown("### 🇵🇹 Portugal")
+    st.markdown("###Portugal")
     st.markdown("EUR / NOK")
 
 with col4:
-    st.markdown("### 🇸🇪 Sweden")
+    st.markdown("###Sweden")
     st.markdown("SEK / NOK")
 
 st.divider()
