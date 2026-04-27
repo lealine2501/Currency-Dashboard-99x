@@ -4,7 +4,7 @@ from utils import load_data, get_pair, plot_history, build_matrix
 st.markdown("""
     <style>
     .main { background-color: #f8f9fb; }
-    h1, h2, h3 { color: #1B3D6E; }
+    h1, h2, h3 { color: #C49FD5; }
     </style>
 """, unsafe_allow_html=True)
 
