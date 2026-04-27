@@ -19,6 +19,7 @@ df = load_data()
 
 usd_nok = get_pair(df, "NOK", "USD")
 brl_nok = get_pair(df, "NOK", "BRL")
+usd_brl = get_pair(df, "BRL", "USD")
 
 # --- USD/NOK graphs ---
 st.subheader("USD / NOK")
@@ -29,6 +30,12 @@ st.divider()
 # --- BRL/NOK graphs ---
 st.subheader("BRL / NOK")
 st.plotly_chart(plot_history(brl_nok, "NOK", "BRL"), use_container_width=True)
+
+st.divider()
+
+# --- USD/BRL graphs ---
+st.subheader("USD / BRL")
+st.plotly_chart(plot_history(usd_brl, "BRL", "USD"), use_container_width=True)
 
 st.divider()
 
