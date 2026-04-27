@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import load_data, get_pair, plot_history, build_matrix
+from utils import load_data, get_pair, get_cross_pair, plot_history, build_matrix
 
 st.set_page_config(page_title="Brazil — 99x", page_icon="🇧🇷", layout="wide")
 
@@ -19,7 +19,7 @@ df = load_data()
 
 usd_nok = get_pair(df, "NOK", "USD")
 brl_nok = get_pair(df, "NOK", "BRL")
-usd_brl = get_pair(df, "BRL", "USD")
+usd_brl = get_cross_pair(usd_nok, brl_nok)
 
 # --- USD/NOK graphs ---
 st.subheader("USD / NOK")

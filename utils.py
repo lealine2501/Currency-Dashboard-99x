@@ -76,6 +76,15 @@ def plot_ltm(pair_df, quote, base):
     )
     return fig
 
+def get_cross_pair(pair_a, pair_b):
+    merged = pd.merge(
+        pair_a[["Date", "Rate"]].rename(columns={"Rate": "Rate_a"}),
+        pair_b[["Date", "Rate"]].rename(columns={"Rate": "Rate_b"}),
+        on="Date"
+    )
+    merged["Rate"] = merged["Rate_a"] / merged["Rate_b"]
+    return merged[["Date", "Rate"]].sort_values("Date")
+
 def build_matrix(pair_df, quote, base, label):
     cutoff = pd.Timestamp.now() - pd.DateOffset(months=24)
     df = pair_df[pair_df["Date"] >= cutoff].copy()
