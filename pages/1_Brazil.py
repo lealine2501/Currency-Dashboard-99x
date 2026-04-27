@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import load_data, get_pair, plot_history, plot_ltm, build_matrix
+from utils import load_data, get_pair, plot_history, build_matrix
 
 st.set_page_config(page_title="Brazil — 99x", page_icon="🇧🇷", layout="wide")
 
@@ -22,21 +22,13 @@ brl_nok = get_pair(df, "NOK", "BRL")
 
 # --- USD/NOK graphs ---
 st.subheader("USD / NOK")
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(plot_history(usd_nok, "NOK", "USD"), use_container_width=True)
-with col2:
-    st.plotly_chart(plot_ltm(usd_nok, "NOK", "USD"), use_container_width=True)
+st.plotly_chart(plot_history(usd_nok, "NOK", "USD"), use_container_width=True)
 
 st.divider()
 
 # --- BRL/NOK graphs ---
 st.subheader("BRL / NOK")
-col3, col4 = st.columns(2)
-with col3:
-    st.plotly_chart(plot_history(brl_nok, "NOK", "BRL"), use_container_width=True)
-with col4:
-    st.plotly_chart(plot_ltm(brl_nok, "NOK", "BRL"), use_container_width=True)
+st.plotly_chart(plot_history(brl_nok, "NOK", "BRL"), use_container_width=True)
 
 st.divider()
 

@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import load_data, get_pair, plot_history, plot_ltm, build_matrix
+from utils import load_data, get_pair, plot_history, build_matrix
 
 st.set_page_config(page_title="Portugal — 99x", page_icon="🇵🇹", layout="wide")
 
@@ -18,11 +18,7 @@ df = load_data()
 eur_nok = get_pair(df, "NOK", "EUR")
 
 st.subheader("EUR / NOK")
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(plot_history(eur_nok, "NOK", "EUR"), use_container_width=True)
-with col2:
-    st.plotly_chart(plot_ltm(eur_nok, "NOK", "EUR"), use_container_width=True)
+st.plotly_chart(plot_history(eur_nok, "NOK", "EUR"), use_container_width=True)
 
 st.divider()
 
