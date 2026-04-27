@@ -6,6 +6,8 @@ st.set_page_config(
     layout="wide"
 )
 
+st.logo("99x_logo.jpg")
+
 pg = st.navigation([
     st.Page("overview.py",          title="Overview",   icon="💱"),
     st.Page("pages/1_Brazil.py",    title="Brazil",     icon="🇧🇷"),
