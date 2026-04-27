@@ -24,7 +24,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 pg = st.navigation([
-    st.Page("overview.py",          title="Overview",   icon="💱"),
+    st.Page("overview.py",          title="Overview"),
     st.Page("pages/1_Brazil.py",    title="Brazil",     icon="🇧🇷"),
     st.Page("pages/2_Sri_Lanka.py", title="Sri Lanka",  icon="🇱🇰"),
     st.Page("pages/3_Portugal.py",  title="Portugal",   icon="🇵🇹"),
