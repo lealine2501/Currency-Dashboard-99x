@@ -22,7 +22,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("99x Currency Dashboard")
+st.title("Currencies Across 99x Group")
 st.markdown(
     "This dashboard tracks exchange rates relevant to 99x subsidiary operations across five countries. "
     "All rates are sourced from Norges Bank and refreshed hourly. "
