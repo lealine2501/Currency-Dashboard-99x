@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.logo("99x_logo.jpg")
+st.logo("99x_logo.jpg", size="large")
 
 pg = st.navigation([
     st.Page("overview.py",          title="Overview",   icon="💱"),
