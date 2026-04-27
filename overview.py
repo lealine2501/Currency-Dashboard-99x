@@ -5,7 +5,7 @@ from utils import load_data
 st.markdown("""
     <style>
     .main { background-color: #f8f9fb; }
-    h1, h2, h3 { color: #C49FD5; }
+    h1, h2, h3 { color: #1D4E89; }
     div[data-testid="stPageLink"] a {
         display: block;
         padding: 1rem 1.25rem;
@@ -17,7 +17,7 @@ st.markdown("""
     }
     div[data-testid="stPageLink"] a:hover {
         box-shadow: 0 2px 10px rgba(27,61,110,0.12);
-        border-color: #C49FD5;
+        border-color: #1D4E89;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -44,7 +44,7 @@ fig_map = go.Figure(go.Choropleth(
     z=[1] * len(countries),
     text=[f"{c['flag']} {name}" for name, c in countries.items()],
     hovertemplate="%{text}<extra></extra>",
-    colorscale=[[0, "#C49FD5"], [1, "#C49FD5"]],
+    colorscale=[[0, "#1D4E89"], [1, "#1D4E89"]],
     showscale=False,
     marker_line_color="white",
     marker_line_width=1.5,

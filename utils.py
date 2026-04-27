@@ -33,10 +33,10 @@ def plot_history(pair_df, quote, base):
         x=monthly["YearMonth"],
         y=monthly["Rate"],
         mode="lines+markers",
-        line=dict(color="#C49FD5", width=2),
-        marker=dict(size=5, color="#C49FD5"),
+        line=dict(color="#1D4E89", width=2),
+        marker=dict(size=5, color="#1D4E89"),
         fill="tozeroy",
-        fillcolor="rgba(196,159,213,0.15)"
+        fillcolor="rgba(29,78,137,0.08)"
     ))
     fig.update_layout(
         title=dict(text=f"{base} / {quote} — 12 month history", font=dict(size=14)),
@@ -58,10 +58,10 @@ def plot_ltm(pair_df, quote, base):
         x=monthly["YearMonth"],
         y=monthly["Rate"],
         mode="lines+markers",
-        line=dict(color="#C49FD5", width=2),
-        marker=dict(size=5, color="#C49FD5"),
+        line=dict(color="#1D4E89", width=2),
+        marker=dict(size=5, color="#1D4E89"),
         fill="tozeroy",
-        fillcolor="rgba(196,159,213,0.15)"
+        fillcolor="rgba(29,78,137,0.08)"
     ))
     fig.update_layout(
         title=dict(text=f"{base} / {quote} — LTM", font=dict(size=14)),
