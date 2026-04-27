@@ -78,23 +78,23 @@ st.subheader("Select a country")
 col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
-    st.page_link("pages/1_Brazil.py", label="🇧🇷  Brazil", icon=None)
+    st.page_link("pages/1_Brazil.py", label="Brazil", icon=None)
     st.caption("BRL / NOK · USD / BRL")
 
 with col2:
-    st.page_link("pages/2_Sri_Lanka.py", label="🇱🇰  Sri Lanka", icon=None)
+    st.page_link("pages/2_Sri_Lanka.py", label="Sri Lanka", icon=None)
     st.caption("LKR / NOK · USD / LKR")
 
 with col3:
-    st.page_link("pages/3_Portugal.py", label="🇵🇹  Portugal", icon=None)
+    st.page_link("pages/3_Portugal.py", label="Portugal", icon=None)
     st.caption("EUR / NOK")
 
 with col4:
-    st.page_link("pages/4_Sweden.py", label="🇸🇪  Sweden", icon=None)
+    st.page_link("pages/4_Sweden.py", label="Sweden", icon=None)
     st.caption("SEK / NOK · NOK / SEK")
 
 with col5:
-    st.page_link("pages/5_Poland.py", label="🇵🇱  Poland", icon=None)
+    st.page_link("pages/5_Poland.py", label="Poland", icon=None)
     st.caption("PLN / NOK · USD / PLN")
 
 st.divider()
