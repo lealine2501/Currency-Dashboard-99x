@@ -1,8 +1,6 @@
 import streamlit as st
 from utils import load_data, get_pair, plot_history, build_matrix
 
-st.set_page_config(page_title="Portugal — 99x", page_icon="🇵🇹", layout="wide")
-
 st.markdown("""
     <style>
     .main { background-color: #f8f9fb; }

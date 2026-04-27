@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 from utils import load_data, get_pair, plot_history, build_matrix
 
-st.set_page_config(page_title="Sweden — 99x", page_icon="🇸🇪", layout="wide")
-
 st.markdown("""
     <style>
     .main { background-color: #f8f9fb; }
