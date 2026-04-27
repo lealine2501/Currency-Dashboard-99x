@@ -45,8 +45,9 @@ st.caption("B = end of month rate · M = monthly average rate")
 
 matrix_usd = build_matrix(usd_nok, "NOK", "USD", "USD/NOK")
 matrix_lkr = build_matrix(lkr_nok, "NOK", "LKR", "LKR/NOK")
+matrix_usd_lkr = build_matrix(usd_lkr, "LKR", "USD", "USD/LKR")
 
-matrix = pd.concat([matrix_usd, matrix_lkr])
+matrix = pd.concat([matrix_usd, matrix_lkr, matrix_usd_lkr])
 st.dataframe(
     matrix.style.format("{:.4f}"),
     use_container_width=True
