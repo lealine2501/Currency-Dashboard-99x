@@ -27,7 +27,7 @@ def to_monthly(pair_df, months):
     return monthly
 
 def plot_history(pair_df, quote, base):
-    monthly = to_monthly(pair_df, 24)
+    monthly = to_monthly(pair_df, 12)
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=monthly["YearMonth"],
@@ -39,7 +39,7 @@ def plot_history(pair_df, quote, base):
         fillcolor="rgba(27,61,110,0.07)"
     ))
     fig.update_layout(
-        title=dict(text=f"{base} / {quote} — 2 year history", font=dict(size=14)),
+        title=dict(text=f"{base} / {quote} — 12 month history", font=dict(size=14)),
         height=320,
         margin=dict(l=50, r=20, t=50, b=30),
         plot_bgcolor="white",
