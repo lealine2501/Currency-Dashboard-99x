@@ -6,7 +6,22 @@ st.set_page_config(
     layout="wide"
 )
 
-st.sidebar.image("99x_logo.jpg", use_container_width=True)
+st.logo("99x_logo.jpg", size="large")
+
+st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] [data-testid="stLogo"] {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stLogo"] img {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: unset !important;
+        height: auto !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 pg = st.navigation([
     st.Page("overview.py",          title="Overview",   icon="💱"),
